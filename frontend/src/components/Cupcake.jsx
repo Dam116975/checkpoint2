@@ -8,15 +8,11 @@ export default function Cupcake({ cupcake }) {
         <div className="cream">
           <div
             className="cream-1"
-            style={{
-              backgroundColor: cupcake.color1,
-            }}
+            style={{ backgroundColor: cupcake.color1 }}
           />
           <div
             className="cream-2"
-            style={{
-              backgroundColor: cupcake.color2,
-            }}
+            style={{ backgroundColor: cupcake.color2 }}
           />
           <div
             className="cream-3"

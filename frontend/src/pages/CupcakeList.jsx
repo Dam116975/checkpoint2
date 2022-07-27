@@ -1,9 +1,33 @@
+import React, { useEffect, useState } from "react";
 import Cupcake from "@components/Cupcake";
 
 export default function CupcakeList() {
   // Step 1: get all cupcakes
+  const [datas, setDatas] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/cupcakes")
+      .then((response) => response.json())
+      .then((json) => setDatas(json));
+  }, []);
+  // console.log(datas);
 
   // Step 3: get all accessories
+
+  const [accessories, setAccessories] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/accessories")
+      .then((response) => response.json())
+      .then((json) => setAccessories(json));
+  }, []);
+  // console.log(accessories)
+  // step 5
+  const [nameFilter, setNameFilter] = useState("");
+  const handleNameFilter = (e) => {
+    setNameFilter(e.target.value);
+  };
+  // console.log(nameFilter);
 
   return (
     <>
@@ -11,18 +35,34 @@ export default function CupcakeList() {
       <form className="center">
         <label htmlFor="cupcake-select">
           Filter by{" "}
-          <select id="cupcake-select">
+          <select onChange={handleNameFilter} id="cupcake-select">
             <option value="">---</option>
             {/* Step 4: add an option for each accessory */}
+            {accessories.map((accessorie) => {
+              return (
+                <option key={accessorie.id} value={accessorie.id}>
+                  {accessorie.name}
+                </option>
+              );
+            })}
           </select>
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
-        <li className="cupcake-item">
-          <Cupcake />
-        </li>
-        {/* end of block */}
+        {datas &&
+          datas
+            .filter(
+              (cupcake) => !nameFilter || cupcake.accessory_id === nameFilter
+            )
+            .map((cupcake) => {
+              return (
+                <li className="cupcake-item" Key={cupcake.id}>
+                  <Cupcake key={cupcake.id} cupcake={cupcake} />
+                </li>
+              );
+            })}
+        ;{/* end of block */}
       </ul>
     </>
   );
