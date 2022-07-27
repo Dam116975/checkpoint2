@@ -38,13 +38,14 @@ export default function CupcakeList() {
           <select onChange={handleNameFilter} id="cupcake-select">
             <option value="">---</option>
             {/* Step 4: add an option for each accessory */}
-            {accessories.map((accessorie) => {
-              return (
-                <option key={accessorie.id} value={accessorie.id}>
-                  {accessorie.name}
-                </option>
-              );
-            })}
+            {accessories &&
+              accessories.map((accessorie) => {
+                return (
+                  <option key={accessorie.id} value={accessorie.id}>
+                    {accessorie.name}
+                  </option>
+                );
+              })}
           </select>
         </label>
       </form>
