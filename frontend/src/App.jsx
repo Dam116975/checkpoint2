@@ -3,7 +3,7 @@ import NavBar from "@components/NavBar";
 import Home from "@pages/Home";
 import CupcakeList from "@pages/CupcakeList";
 import Instructions from "@pages/Instructions";
-import CupcakeDetailspage from "@pages/CupcakeDetailspage";
+import CupcakeDetailspage from "@pages/CupcakeDetailsPage";
 
 import "./App.css";
 

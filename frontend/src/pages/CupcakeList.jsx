@@ -58,8 +58,8 @@ export default function CupcakeList() {
             )
             .map((cupcake) => {
               return (
-                <li className="cupcake-item" Key={cupcake.id}>
-                  <Cupcake key={cupcake.id} cupcake={cupcake} />
+                <li className="cupcake-item" key={cupcake.id}>
+                  <Cupcake cupcake={cupcake} />
                 </li>
               );
             })}
